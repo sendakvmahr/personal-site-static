@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Peddlers between Pulsars - Devlog 4</title>
-        <link rel="shortcut icon" type="image/x-icon" href="/assets/base_images/favicon32.png">
+        <link rel="shortcut icon" type="image/x-icon" href="https://www.tararntula.com/build/assets/base_images/favicon32.png">
         <link rel="preload" as="style" href="https://www.tararntula.com/build/assets/site-37f195b7.css" /><link rel="modulepreload" href="https://www.tararntula.com/build/assets/site-4ed993c7.js" /><link rel="stylesheet" href="https://www.tararntula.com/build/assets/site-37f195b7.css" /><script type="module" src="https://www.tararntula.com/build/assets/site-4ed993c7.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Lato&amp;display=swap" rel="stylesheet">
     </head>
@@ -23,13 +23,13 @@
 <p>Most of the changes were graphics and code organization. I'll talk about the graphics first.</p>
 <h2>Animations</h2>
 <p>All the walk and idle anims and characters are done. All 5 here! wiggling around. Except the human. They're not very wiggly.</p>
-<p><img src="/assets/blog_images/idle-anims-display.gif" alt="A human watches as a gas, beetle, mollusk, and plant with idle animations" /></p>
+<p><img src="https://www.tararntula.com/build/assets/blog_images/idle-anims-display.gif" alt="A human watches as a gas, beetle, mollusk, and plant with idle animations" /></p>
 <p>I'm particularly fond of this one's (Gitrah's) little walk. It's not as lurchy as I'd like it, but if I made it more jerky, they'd feel too awkward to play.</p>
-<p><img src="/assets/blog_images/gitrah-waddle.gif" alt="A plant lurches around" /></p>
+<p><img src="https://www.tararntula.com/build/assets/blog_images/gitrah-waddle.gif" alt="A plant lurches around" /></p>
 <h2>Interface</h2>
 <p>The text was awful before, and I knew that. I was using a font that wasn't monospaced onto a PNG, and told Godot to render it as a monospaced font. So I cleaned up the menus a bit and made it a proper font - but with some characters modified to be subscripts instead.</p>
 <p>Also, name tags and a nicer text box. But not a nicer ship, yet.</p>
-<p><img src="/assets/blog_images/text_update_screenshot.webp" alt="There is a plant talking to a gas alien in a pink alpine area. The text box is labeled &quot;Neon&quot; and says &quot;Someone is looking for some C12H22O11 - that compound specifically. They were upset with the C70 I gave them.&quot; There is an placeholder ship image in the map." /></p>
+<p><img src="https://www.tararntula.com/build/assets/blog_images/text_update_screenshot.webp" alt="There is a plant talking to a gas alien in a pink alpine area. The text box is labeled &quot;Neon&quot; and says &quot;Someone is looking for some C12H22O11 - that compound specifically. They were upset with the C70 I gave them.&quot; There is an placeholder ship image in the map." /></p>
 <h2>Code Refactoring</h2>
 <p>NPCs and cutscenes needed work - I want them to vary depending on the player character. Not just a few different lines - each character should see different parts of the events depending on who they're playing as. Unplayed characters should show up as NPCs in the world - but not if you're playing as them, and have all the custom animations they have as players.</p>
 <p>Cutscenes are still a mess. But they're in a much better position to start handling playing the same scene from the different perspective of the 5 player characters.</p>
