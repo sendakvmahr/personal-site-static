@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Peddlers between Pulsars - Devlog 7</title>
+        <link rel="shortcut icon" type="image/x-icon" href="https://www.tararntula.com/build/assets/base_images/favicon32.png">
+        <link rel="preload" as="style" href="https://www.tararntula.com/build/assets/site-37f195b7.css" /><link rel="modulepreload" href="https://www.tararntula.com/build/assets/site-4ed993c7.js" /><link rel="stylesheet" href="https://www.tararntula.com/build/assets/site-37f195b7.css" /><script type="module" src="https://www.tararntula.com/build/assets/site-4ed993c7.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Lato&amp;display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="pixel-textbox">
+            <a href="/">Home</a>
+            <!--<a href="/">Pixelart</a>-->
+            <a href="/devlog">Devlog</a>
+            <a href="/links">Links</a>
+        </nav>
+        <div id="header" class="pixel-textbox content-box">
+            <h1>Peddlers between Pulsars - Devlog 7</h1>
+        </div>
+        <div id="content" class="pixel-textbox content-box">
+            <p>Ugh, it's been a month since the last post. Where has the time gone? No, I know where the time's gone, and it's not really to gamedev. It's mainly just preparing for the future. A very nonsignificant amount of time was just spent planning, for both gamedev and nongamedev things.</p>
+<p>I don't think I'll be able to finish by my original goal of early 2026. No surprise when a game doesn't meet its original deadline, but what's frustrating was that I was pretty on track till the election came along. General demotivation, keeping up, and having a lot of backup plans just means I won't have as much energy to devote to fun stuff. Following up from last month, putting a bit more of myself in means I have a lot more incentive to give it a lot of attention so it feels right, and not just good enough.</p>
+<p>As for implementation work, I think the main things I did were switching to Obsidian, starting the chat system, and fixing up animations. Everything was geared towards making cutscenes better, and not just serviceable to going through the game.</p>
+<p>Obsidian was because I wanted a nice text editor that wasn't as clunky to sync. I have a weaker windows laptop and a linux desktop. The desktop is nicer to write on, but I don't always like being glued to my desk, especially in winter. It's in a very cold room. I feel like I COULD learn Reaper and handle audio with linux eventually, but I really don't want to wrestle with making things work in Linux on top of everything else. I also wrote a quick python script to pump out cutscene jsons from obsidian .mds. JSONS aren't an awful format for cutscenes, but quoting strings all day makes writing clunky.</p>
+<p>And that will be useful when working on the chat.</p>
+<p><img src="https://www.tararntula.com/build/assets/blog_images/2024-12/chat.png" alt="A chat screen where Malady is being very annoying." /></p>
+<p>I kinda felt awful putting the first demo up with the chat unimplemented, but I wanted to make my own deadlines and UI in game engines has just... never been something I enjoy. I'm not a CSS genius, but I know how to use flex/gridbox decently well enough that a lot feels incredibly clunky. The chat interface was just especially a drag - this should take like 15 minutes in HTML. Then inputs, and doing manual calls when it's appropriate to scroll (I have no intention of letting anyone use the mouse for this one screen) is just a bit painful. But now all the components are set up, so it's more about generating them dynamically.</p>
+<p>Animations, the animation system was nicely cleaned up so NPCs, NPC Players, and the Player objects are all on the same, now sorted animation system. Previously, Players/NPC Players used animations which were lumped in one big category and badly labeled, NPCs used coded animated frames OR straight up coded region offsets.</p>
+<p>Nope, everythings clean now and it's easy to add in new animations. Like jumping, or in Exo's case, gliding.</p>
+<p>But overall, I think I should be on good track to do my original goal of tightening up the demo and existing features by the end of the month. I definitely didn't really have the character voices down when I did the writing for the first demo. A lot of the writing got the gist of the general story down, but the characters were pretty bland. This was definitely exacerbated by the fact I was coding all the &quot;commands&quot; (like move this character down, make them turn right&quot;) as I was writing the cutscenes themselves.</p>
+<p>Now that the commands were out of the way, I could just sit down, type things, and trust they'd actually happen. That, and giving Malady the option to jump to identify herself as the speaker made things a LOT cleaner. It's not perfect, but it's a pretty good step.</p>
+<p>Another thing I did was implement smartish markers. Previously, I input all the coordinates or amounts every character moved with numbers. That sucked, and everyone bumped into each other. So now these markers just display sprite/direction in the Godot editor, so I have a rough idea of what the cutscenes look while writing.</p>
+<p>It can get a little busy though.</p>
+<p><img src="https://www.tararntula.com/build/assets/blog_images/2024-12/busy_cutscene.png" alt="A screenshot of godot where all the characters are duplicated, representing different steps in the cutscene." /></p>
+<p>This has helped a lot with choreographing them too.  It's a bit tough because Neon and Gitrah don't rotate - so they move around a lot more in their cutscenes to emote, and that means they crash into everyone. I also had to change quite a bit to make sure EVERY character sees what is needed during each cutscene in each of their viewports. During the tutorial, there was a scene where Exos, Malady, and Neon could see Neon looking at Aerin's ship. But Gitrah, who was the furthest down, could only see them talking at the edge of the viewport. Oops.</p>
+<p><img src="https://www.tararntula.com/build/assets/blog_images/2024-12/cut_cutscene.png" alt="A screenshot of Peddlers between Pulsars. All the characters are looking at something off screen, but the camera follows Gitrah, who is too far for the player to see what everyone is looking at." /></p>
+<p>Lastly, FL Studio... BLAH. I can see how audio people end up with 9230491840 plugins now. I tried to switch over from the soundfont I found to the default FLstudio instruments with &quot;nicer&quot; samples, and made everything sound weird. But at least it's the right volume now? The guitar options aren't as sad either.</p>
+<p>I think I got what was going on when I was thinking about Megaman music. Jakob Orbital elevator is pretty nice song, but the MMX8 version sounds awful to me. Compare it to the Rockman X DiVE version, it sounds like a painting where everything's HD but the color are blended badly so everything's muddy. I don't think I'm at the level where I can handle something that requires that level of production (Is that the production stage? I can't really tell) but I don't WANT that either. It's a bit dissonant to me when retro looking games have HQ orchestral music instead of something a little clonky, so I'll be looking at more options for more... compressed? instruments.</p>
+
+Tags: 
+    <a href="/devlog/tags/peddlers-between-pulsars">Peddlers Between Pulsars</a>
+
+        </div>
+    </body>
+</html>
