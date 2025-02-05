@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Peddlers between Pulsars - Devlog 8</title>
+        <link rel="shortcut icon" type="image/x-icon" href="https://www.tararntula.com/build/assets/base_images/favicon32.png">
+        <link rel="preload" as="style" href="https://www.tararntula.com/build/assets/site-37f195b7.css" /><link rel="modulepreload" href="https://www.tararntula.com/build/assets/site-4ed993c7.js" /><link rel="stylesheet" href="https://www.tararntula.com/build/assets/site-37f195b7.css" /><script type="module" src="https://www.tararntula.com/build/assets/site-4ed993c7.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Lato&amp;display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="pixel-textbox">
+            <a href="/">Home</a>
+            <!--<a href="/">Pixelart</a>-->
+            <a href="/devlog">Devlog</a>
+            <a href="/links">Links</a>
+        </nav>
+        <div id="header" class="pixel-textbox content-box">
+            <h1>Peddlers between Pulsars - Devlog 8</h1>
+        </div>
+        <div id="content" class="pixel-textbox content-box">
+            <p>There's been a lot going on. Mainly non game related. I'm not going to talk about that much, except that it's made me more tired and distracted than I should be.</p>
+<p>Okay summaries:</p>
+<ul>
+<li>December:
+<ul>
+<li>Chat</li>
+<li>Cutscenes update - from Obsidian</li>
+</ul>
+</li>
+<li>January:
+<ul>
+<li>Ships</li>
+<li>&quot;Ships should load when their owners are on the planet.&quot;</li>
+<li>Read from Obsidian for npc dialogue</li>
+</ul>
+</li>
+</ul>
+<p>A huge chunk of December was just making the cutscenes read from Obsidian. Before, they were a giant json - which worked pretty well for the amount of flexibility I wanted from them. Awful to actually write in - which is a reason the writing has been pretty junk so far. So now there's python script that'll scoop all my .mds from an Obsidian folder and regurgitate them as jsons so Godot can read them easily.</p>
+<p>The chat works, and so does a price spike event system. The chat doesn't pull from Obsidian yet though. That's the last thing I've got to do a script for.</p>
+<p>Throughout December, the individual ships were finally redrawn from their placeholder sprites.</p>
+<p><img src="https://www.tararntula.com/build/assets/blog_images/2-4-25/all_ships.png" alt="ships and their owners" /></p>
+<p>Now that I didn't have to stare at blown up sprites all day, it was time to make the ship object smarter. First, it's got a species attached to it, and that determines rendering/whether or not the player is eligible for collision. When all the Peddler's ships appeared on a landing pad, I thought &quot;Ships should load when their owners are on the planet.&quot;</p>
+<p>Then I realized how much work that would take. At the time, NPC appearance conditions drew from a variable number stored in a state manager, but no NPC could access each other's spawn conditions - let alone an NPC's spawn condition on another map. So anyways, NPC dialogue and appearance conditions are also written in obsidian, exported and organized per map/planet/npcs. That way, ships can look into the current planet's data, check conditions, and see if their owner is on the planet.</p>
+<p>Small last thing, but prices can vary now. Its probably about time to think about icons in the text box soon.</p>
+<p><img src="https://www.tararntula.com/build/assets/blog_images/2-4-25/2.4.11.png" alt="sales interface where sell value doesn't match estimated value" /></p>
+<p>...I should redraw the &quot;want to buy&quot; areas.</p>
+
+Tags: 
+    <a href="/devlog/tags/peddlers-between-pulsars">Peddlers Between Pulsars</a>
+
+        </div>
+    </body>
+</html>
