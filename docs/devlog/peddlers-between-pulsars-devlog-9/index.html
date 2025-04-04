@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Peddlers between Pulsars - Devlog 9</title>
+        <link rel="shortcut icon" type="image/x-icon" href="https://www.tararntula.com/build/assets/base_images/favicon32.png">
+        <link rel="preload" as="style" href="https://www.tararntula.com/build/assets/site-37f195b7.css" /><link rel="modulepreload" href="https://www.tararntula.com/build/assets/site-4ed993c7.js" /><link rel="stylesheet" href="https://www.tararntula.com/build/assets/site-37f195b7.css" /><script type="module" src="https://www.tararntula.com/build/assets/site-4ed993c7.js"></script>
+        <link href="https://fonts.googleapis.com/css?family=Lato&amp;display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav class="pixel-textbox">
+            <a href="/">Home</a>
+            <!--<a href="/">Pixelart</a>-->
+            <a href="/devlog">Devlog</a>
+            <a href="/links">Links</a>
+        </nav>
+        <div id="header" class="pixel-textbox content-box">
+            <h1>Peddlers between Pulsars - Devlog 9</h1>
+        </div>
+        <div id="content" class="pixel-textbox content-box">
+            <h2>Changes</h2>
+<p>So at this point, the new demo should be out. Changes include:</p>
+<ul>
+<li>New graphics
+<ul>
+<li>Start screen has an actual, rough image</li>
+<li>More NPCs have animations</li>
+<li>Svarog has some nice new tiles</li>
+</ul>
+</li>
+<li>Linux!</li>
+<li>Deprecated buying ship windows.</li>
+<li>Each Peddler has their own, non-placeholder ship.</li>
+<li>Redid some maps.</li>
+<li>Cutscenes should be more dynamic with different writing.</li>
+<li>The music should be better. I am so sorry for anyone who played the previous demo, and dealt with my ignorance of how to adjust instrument volumes.</li>
+<li>Malady and Exos have jumps.</li>
+<li>The chat system exists - with a single group chat for all the Peddlers and Aji.</li>
+</ul>
+<p>This little screen took up a decent chunk of time.
+<img src="https://www.tararntula.com/build/assets/blog_images/4-4-25/chat.png" alt="A chat interface showing the characters talking, indicating someone is typing." /></p>
+<h2>Technical rambling:</h2>
+<p>I realized the system for dialogue, cutscene, and chat complicated. Using a plugin would have been a smarter choice, if I didn't want certain things:</p>
+<ol>
+<li>There's a lot that should happen <strong>per visit to a planet.</strong> NPC dialogues, though random, should persist per while the player is landed, even if they go off maps. Ships should spawn if their pilot has spawned anywhere on the planet. The ships meant there was a need to access NPC spawn conditions outside of the scenes/maps they spawned in. Plugins make the sensible assumption there's no need to know what an NPC on the other side of the world is doing.</li>
+<li>I don't like writing in Godot. My screens are small. All those extra windows mean I have a pitiful 1/3rd of my screen or so for actual text.</li>
+</ol>
+<p>I've been using a rather sloppily tossed together set of python scripts to parse and convert Obsidian .md files into jsons that are grouped per planet or chat group. Once that's done, they're loaded when players navigate to a new planet, when they load up the chat screen, or when they start a cutscene.</p>
+<p>But that was sloppy, because I developed the syntax AS I made the tools. They became fragile fast, but I went along with it till I figured out a general format that was comfortable for me. Finally went back, wrote tests and standardized them. Now, nothing randomly breaks when I start adding new dialogue - and to double check, Aji now had a bunch of lines just for each character chatting with them.
+<img src="https://www.tararntula.com/build/assets/blog_images/4-4-25/ajidialogue.png" alt="Lots of dialogue for aji - 103 lines" /></p>
+<h2>Future Plans</h2>
+<p>Slightly frustrated so little really changed between versions, but I also did a lot of planning for where to go from here. Peddlers between Pulsars isn't what it started as (Space Plants). It's less hopeless, it's not a farm sim, and which ever protagonist you choose, they aren't alone. So, some thoughts on what I want to work on next.</p>
+<ul>
+<li>Balancing
+<ul>
+<li>To prepare for proper balancing, I'll start with inputting all the planets and items planned. I made the start/demo easy to complete because any attempt at balancing with 3/4ths the planets unplanned would be silly, but now they're planned.</li>
+<li>A lot of spreadsheets.</li>
+</ul>
+</li>
+<li>Changing how travel between planets work. The grindiness made sense when I wanted it to feel like your life was being wasted. Not anymore.
+<ul>
+<li>Changing course mid flight. That should also be mixed with planets something like coordinates instead of travel days always equaling 7.</li>
+<li>Variance in travel length. When predicting travel time across solar systems, makes sense that math might be off by a day or two.</li>
+<li>Refueling, food, manual labor (minigames) and hotels.</li>
+</ul>
+</li>
+<li>Settings
+<ul>
+<li>I like Shift+ASDF and arrow keys to play games. Lack of remappable controls is getting on MY nerves.</li>
+<li>Lot of the travel/balancing changes will introduce difficulty. I'm just fond of being able to set such tings in settings.</li>
+</ul>
+</li>
+<li>Much more NPC involvement. Nobody's triggering price spikes, buying directly from you, or sending you out on requests - all things I wanted to do, but I HAD to get the dialogue system in cleaned up before I made an even bigger mess. Only the muddy fish and fruitcake snail have anything like that.</li>
+<li>Saving. I started with learning how godot can use a save system, so most of my state options should be saveable. But I still have to do it.</li>
+</ul>
+<p>Of course, decent amount of writing and drawing, which are fun for me. I've been very antsy to work on that walkable planet full of spiders.</p>
+<p><img src="https://www.tararntula.com/build/assets/blog_images/4-4-25/fluffbike.gif" alt="spider on a bike" /></p>
+
+Tags: 
+    <a href="/devlog/tags/peddlers-between-pulsars">Peddlers Between Pulsars</a>
+
+        </div>
+    </body>
+</html>
